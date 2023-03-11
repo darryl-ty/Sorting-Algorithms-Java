@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        System.out.println("Hello world!");
         int inputNum = 100;
         ArrayList<Integer> customArray = randomArrayGeneration(inputNum);
         System.out.println(selectionSort(customArray));
@@ -32,12 +31,13 @@ public class Main {
         for (int i = 0; i < inputList.size(); i++){
             int min = i;
             for (int j = i+1; j < inputList.size(); j++){
-                if (j < min){
+                if (inputList.get(j) < inputList.get(min)){
                     min = j;
                 }
             }
-            inputList.set(i, min);
-            inputList.set(min, i);
+            int temp = inputList.get(min);
+            inputList.set(min, inputList.get(i));
+            inputList.set(i, temp);
         }
         return inputList;
     }
