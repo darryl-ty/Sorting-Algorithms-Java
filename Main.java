@@ -2,11 +2,11 @@ import java.util.ArrayList;
 
 public class Main {
     public static void main(String[] args) {
-        int inputNum = 100;
+        int inputNum = 1000;
         ArrayList<Integer> customArray = arrayGeneration(inputNum);
-//        System.out.println(selectionSort(customArray));
-//        System.out.println(bubbleSort(customArray));
-        System.out.println(hayesSort(customArray));
+        selectionSort(customArray);
+        bubbleSort(customArray);
+        hayesSort(customArray);
     }
 
     public static ArrayList<Integer> arrayGeneration(int num){
@@ -21,6 +21,7 @@ public class Main {
 
     public static ArrayList<Integer> bubbleSort(ArrayList<Integer> inputList){
         /** Returns a sorted ArrayList of Integers using bubbleSort algorithm. */
+        long start = System.currentTimeMillis();
         for (int i = 0; i < inputList.size(); i++){
             for (int j = 0; j < inputList.size() - 1 - i; j++){
                 if (inputList.get(j + 1) < inputList.get(j)){
@@ -30,11 +31,15 @@ public class Main {
                 }
             }
         }
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println(timeElapsed);
         return inputList;
     }
 
     public static ArrayList<Integer> hayesSort(ArrayList<Integer> inputList){
         /** Returns a sorted ArrayList of integers sorted using professor's "hayesSort" algorithm. */
+        long start = System.currentTimeMillis();
         ArrayList<Integer> secondList = new ArrayList<>();
         int max = inputList.get(0);
         for (int i = 0; i < inputList.size(); i++){
@@ -43,16 +48,20 @@ public class Main {
             }
         }
 
-        for (int j = 0; j < max; j++){
+        for (int j = 0; j <= max; j++){
             if (inputList.contains(j)){
                 secondList.add(j);
             }
         }
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println(timeElapsed);
         return secondList;
     }
 
     public static ArrayList<Integer> selectionSort(ArrayList<Integer> inputList){
         /** Returns a sorted array through the selectionSort algorithm. */
+        long start = System.currentTimeMillis();
         for (int i = 0; i < inputList.size(); i++){
             int min = i;
             for (int j = i+1; j < inputList.size(); j++){
@@ -64,6 +73,9 @@ public class Main {
             inputList.set(min, inputList.get(i));
             inputList.set(i, temp);
         }
+        long finish = System.currentTimeMillis();
+        long timeElapsed = finish - start;
+        System.out.println(timeElapsed);
         return inputList;
     }
 }
