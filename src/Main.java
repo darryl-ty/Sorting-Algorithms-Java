@@ -4,8 +4,8 @@ public class Main {
     public static void main(String[] args) {
         int inputNum = 100;
         ArrayList<Integer> customArray = randomArrayGeneration(inputNum);
-        System.out.println(selectionSort(customArray));
-//        bubbleSort(customArray);
+//        System.out.println(selectionSort(customArray));
+        System.out.println(bubbleSort(customArray));
 //        hayesSort(customArray);
     }
 
@@ -19,6 +19,15 @@ public class Main {
     }
 
     public static ArrayList<Integer> bubbleSort(ArrayList<Integer> inputList){
+        for (int i = 0; i < inputList.size(); i++){
+            for (int j = 0; j < inputList.size() - 1 - i; j++){
+                if (inputList.get(j + 1) < inputList.get(j)){
+                    int temp = inputList.get(j + 1);
+                    inputList.set(j + 1, inputList.get(j));
+                    inputList.set(j, temp);
+                }
+            }
+        }
         return inputList;
     }
 
